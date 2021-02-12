@@ -1,0 +1,22 @@
+*,
+*::before
+*::after {
+	box-sizing: border-box;
+}
+
+form {
+	width: 70%;
+	border-color: #d6d6d6;
+}
+.input_container {
+	display: flex;
+	justify-content: center;
+}
+.form_group {
+	margin: 1rem 0rem 1rem 0rem;
+}
+.form_control {
+	display: block;
+	margin: 0.5rem 0rem 0rem 0rem;
+	width: 100%;
+}
