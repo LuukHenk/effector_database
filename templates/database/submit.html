@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport"
+			  content="width=device-width, initial-scale=1.0">
+		<title>Effector database</title>
+
+		{% load static %}
+		<link rel="stylesheet" type="text/css"
+			  href="{% static 'database/submit.css' %}">
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<header class="title_area">
+				<a href="{% url 'database:index' %}">
+					<h1 class="title_area--title">Effector database</h1>
+				</a>
+			</header>
+
+			<section class="form_wrapper">
+				{% if error_message %}<p><strong>{{error_message}}</p></strong>{% endif %}
+
+				<h3>Add effector sequence to the database</h3>
+
+				<form action="{% url 'database:submitted' %}" method="post">
+					{% csrf_token %}
+					<div class="form_group">
+						<label for="effector_id">Effector ID<br></label>
+						<input class="form_control" type="text" name="effector_id" placeholder="fasta_123"/>
+					</div>
+
+					<div class="form_group">
+						<label for="effector_sequence">DNA sequence<br></label>
+						<input class="form_control" type="text" name="effector_sequence" placeholder="ACTG"/>
+					</div>
+
+					<!-- <div class="form_group"> -->
+					<!-- 	<label for="effector_sequence">or upload a FASTA file<br></label> -->
+					<!-- 	<input class="form_control" type="file" name="fasta" placeholder="Upload file"/> -->
+					<!-- </div> -->
+
+					<input type="submit" value="submit">
+				</form>
+			</section>
+		</section>
+
+
+	</body>
+</html>
+
