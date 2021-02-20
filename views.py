@@ -28,7 +28,7 @@ def submitted(request):
         })
     # Add a confirmation page
     new_seq.save()
-    return HttpResponseRedirect(reverse("database:index"))
+    return HttpResponseRedirect(reverse("database:databaseViewer"))
 
 def databaseViewer(request):
     effector_sequences = Sequence.objects.all()

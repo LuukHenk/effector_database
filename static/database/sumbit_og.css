@@ -10,7 +10,7 @@
 	--fs-border: 0.15rem;
 
 	--clr-header-bg: #514efc;
-	--clr-header-fg: #000000;
+	--clr-header-fg: #FFFFFF;
 	--clr-button-bg: #FFFFFF;
 	--clr-button-bg-hover: #D5D5D3;
 	--clr-button-fg: #000000;
@@ -27,7 +27,7 @@
 
 @media (min-width: 900px) {
 	:root {
-		--fs-h1: 4rem;
+		--fs-h1: 4.5rem;
 		--fs-h2: 2.75rem;
 		--fs-h3: 1.5rem;
 		--fs-body: 1.125rem;
@@ -69,36 +69,34 @@ a {
     overflow:hidden;
 }
 .title_area {
-	height: 5rem;
+	position: relative;
+	text-align: center;
 	margin: 0 auto;
 	background: var(--clr-header-bg);
 	color: var(--clr-header-fg);
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
 }
 
-.redirect_area {
-	display: grid;
-	height: 100%;
-	grid-template-rows: 50% 50%;
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
-.button_section {
-	height: 100%;
-	background: var(--clr-button-bg);
-	color: var(--clr-button-fg);
 
-	display: flex;
-	align-items: center;
-	justify-content: center;
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
-.button_section:hover {
-	background: var(--clr-button-bg-hover);
-}
-@media (min-width: 600px) {
-	.redirect_area {
-		grid-template-columns: 50% 50%;
-		grid-template-rows: 100%;
-	}
+
+input[type=submit]:hover {
+  background-color: #45a049;
 }

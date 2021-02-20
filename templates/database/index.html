@@ -14,33 +14,25 @@
 
 	<body>
 		<div class="wrapper">
-			<header class="title_area">
-				<a href="{% url 'database:index' %}">
-					<h1 class="title_area--title">Effector database</h1>
-				</a>
-			</header>
+			<a href="{% url 'database:index' %}">
+				<header class="title_area">
+						<h1 class="title_area--title">Effector database</h1>
+				</header>
+			</a>
 
 			<section class="redirect_area">
 				<!-- Link to submit page -->
-				<section class="button_section submit--button_section">
-					<a href="{% url 'database:submit' %}">
-						<div class=button_link>
-							<h3 class="button_text submit--button_text">
-								Submit data to database
-							</h3>
-						</div>
-					</a>
-				</section>
+				<a href="{% url 'database:submit' %}">
+					<section class="button_section submit--button_section">
+						<h3 class="button_text submit--button_text">Submit data to database</h3>
+					</section>
+				</a>
 				<!-- Link to view database page -->
-				<section class="button_section view_database--button_section">
-					<a href="{% url 'database:databaseViewer' %}">
-						<div class=button_link>
-							<h3 class="button_text view_database--button_text">
-								View database
-							</h3>
-						</div>
-					</a>
-				</section>
+				<a href="{% url 'database:databaseViewer' %}">
+					<section class="button_section view_database--button_section">
+						<h3 class="button_text view_database--button_text">View database</h3>
+					</section>
+				</a>
 			</section>
 
 		</div>

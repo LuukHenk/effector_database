@@ -13,38 +13,57 @@
 	</head>
 
 	<body>
-		<div class="wrapper">
-			<header class="title_area">
-				<a href="{% url 'database:index' %}">
-					<h1 class="title_area--title">Effector database</h1>
-				</a>
-			</header>
+		<header class="title_area">
+			<h1 class="title_area--title">Effector database</h1>
+		</header>
 
-			<section class="main_page">
+		<div class="banner">
+			<a class="banner_item banner_item--active" href="{% url 'database:databaseViewer' %}">Database</a>
+			<a class="banner_item" href="{% url 'database:submit' %}">Add sequence</a>
+		</div>
 
-				<h3>Effector database</h3>
 
-				<section class="search_area">
-					<form method="get">
-						{{ search_filter.form }}
+		<div class="main_page">
+			<div class="search_area" id="search_area">
+				<form method="get">
+					<div class="item_block">
+						<label for="search_filter.form.effector_id">Effector ID</label>
+						<input id="search_filter.form.effector_id" type="text" name="effector_id"
+						placeholder="fasta_123">
+					</div>
+
+
+					<div class="item_block">
+						<label for="search_filter.form.effector_sequence">DNA sequence</label>
+						<input id="search_filter.form.effector_sequence" type="text" name="effector_sequence"
+						placeholder="ACTG">
+					</div>
+
+					<div class="submit_buttom_area">
 						<input type="Submit" value="Search">
-					</form>
-				</section>
+					</div>
+				</form>
+			</div>
 
+			<table id="effector_sequence_table">
+				<tr>
+					<th>Effector ID</th>
+					<th>DNA sequence</th>
+				</tr>
 				{% if effector_sequences %}
-					<table class="table_area">
-						{% for effector_sequence in effector_sequences %}
+					{% for effector_sequence in effector_sequences %}
 						<tr>
 							<td>{{ effector_sequence.effector_id }}</td>
 							<td>{{ effector_sequence.effector_sequence }}</td>
 						</tr>
-						{% endfor %}
-					</table>
+					{% endfor %}
 				{% else %}
-					<h3>No data available</h3>
+					<tr>
+						<td>No data available</td>
+						<td></td>
+					</tr>
 				{% endif %}
-			</section>
-
+			</table>
 		</div>
 	</body>
 </html>

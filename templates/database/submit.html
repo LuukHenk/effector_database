@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -6,46 +8,45 @@
 			  content="width=device-width, initial-scale=1.0">
 		<title>Effector database</title>
 
-		{% load static %}
 		<link rel="stylesheet" type="text/css"
 			  href="{% static 'database/submit.css' %}">
 	</head>
 
 	<body>
-		<div class="wrapper">
-			<header class="title_area">
-				<a href="{% url 'database:index' %}">
-					<h1 class="title_area--title">Effector database</h1>
-				</a>
-			</header>
+		<header class="title_area">
+			<h1 class="title_area--title">Effector database</h1>
+		</header>
 
-			<section class="form_wrapper">
+		<div class="banner">
+			<a class="banner_item" href="{% url 'database:databaseViewer' %}">Database</a>
+			<a class="banner_item banner_item--active" href="{% url 'database:submit' %}">Add sequence</a>
+		</div>
+
+		<div class="form_wrapper">
+			<div class="error_banner">
 				{% if error_message %}<p><strong>{{error_message}}</p></strong>{% endif %}
+			</div>
 
-				<h3>Add effector sequence to the database</h3>
+			<form action="{% url 'database:submitted' %}" method="post">
+				{% csrf_token %}
+				<div class="form_group">
+					<label for="effector_id">Effector ID<br></label>
+					<input class="form_control" type="text" name="effector_id" placeholder="fasta_123"/>
+				</div>
 
-				<form action="{% url 'database:submitted' %}" method="post">
-					{% csrf_token %}
-					<div class="form_group">
-						<label for="effector_id">Effector ID<br></label>
-						<input class="form_control" type="text" name="effector_id" placeholder="fasta_123"/>
-					</div>
+				<div class="form_group">
+					<label for="effector_sequence">DNA sequence<br></label>
+					<input class="form_control" type="text" name="effector_sequence" placeholder="ACTG"/>
+				</div>
 
-					<div class="form_group">
-						<label for="effector_sequence">DNA sequence<br></label>
-						<input class="form_control" type="text" name="effector_sequence" placeholder="ACTG"/>
-					</div>
+				<!-- <div class="form_group"> -->
+				<!-- 	<label for="effector_sequence">or upload a FASTA file<br></label> -->
+				<!-- 	<input class="form_control" type="file" name="fasta" placeholder="Upload file"/> -->
+				<!-- </div> -->
 
-					<!-- <div class="form_group"> -->
-					<!-- 	<label for="effector_sequence">or upload a FASTA file<br></label> -->
-					<!-- 	<input class="form_control" type="file" name="fasta" placeholder="Upload file"/> -->
-					<!-- </div> -->
-
-					<input type="submit" value="submit">
-				</form>
-			</section>
-		</section>
-
+				<input type="submit" value="Submit">
+			</form>
+		</div>
 
 	</body>
 </html>
