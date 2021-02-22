@@ -19,10 +19,9 @@ def submitted(request):
         post_effector_sequence = request.POST.get("effector_sequence", "")
         post_effector_name = request.POST.get("effector_name", "")
         post_effector_description = request.POST.get("effector_description", "")
-        post_effector_signal_peptide = request.POST.get("effector_signal_peptide", False)
+        post_effector_signal_peptide = request.POST.get("effector_signal_peptide", "1")
 
-        print(post_effector_signal_peptide)
-        print(type(post_effector_signal_peptide))
+        # Check if effector id is unique
         if Sequence.objects.filter(effector_id=post_effector_id).count() != 0:
             error_message = "'{}' already exists".format(post_effector_id)
             raise ValueError
@@ -32,7 +31,7 @@ def submitted(request):
             effector_sequence=post_effector_sequence,
             effector_name=post_effector_name,
             effector_description=post_effector_description,
-            # effector_signal_peptide=post_effector_signal_peptide
+            effector_signal_peptide=not post_effector_signal_peptide
         )
 
         if not new_seq.effector_id:
@@ -47,7 +46,10 @@ def submitted(request):
         return render(request, "database/submit.html", {
             "error_message": error_message,
             "post_effector_id": post_effector_id,
-            "post_effector_sequence": post_effector_sequence
+            "post_effector_sequence": post_effector_sequence,
+            "post_effector_name": post_effector_name,
+            "post_effector_description": post_effector_description,
+            "post_effector_signal_peptide": "checked" if new_seq.effector_signal_peptide else ""
         })
     # Add a confirmation page
     new_seq.save()
