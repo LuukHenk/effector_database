@@ -31,14 +31,33 @@
 				{% csrf_token %}
 				<div class="form_group">
 					<label for="effector_id">Effector ID<br></label>
-					<input class="form_control" type="text" name="effector_id" placeholder="fasta_123"/>
+					<input class="form_control" type="text" name="effector_id" placeholder="fasta_123"
+				   value={{ post_effector_id }} >
 				</div>
 
 				<div class="form_group">
 					<label for="effector_sequence">DNA sequence<br></label>
-					<input class="form_control" type="text" name="effector_sequence" placeholder="ACTG"/>
+					<input class="form_control" type="text" name="effector_sequence" placeholder="ACTG"
+					value={{ post_effector_sequence }} >
 				</div>
 
+				<div class="form_group">
+					<label for="effector_name">Effector name<br></label>
+					<input class="form_control" type="text" name="effector_name" placeholder="effector A"
+					value={{ post_effector_name }} >
+				</div>
+
+				<div class="form_group">
+					<label for="effector_description">Description<br></label>
+					<input class="form_control" type="text" name="effector_description" placeholder=""
+					value={{ post_effector_description }} >
+				</div>
+
+				<div class="form_group">
+					<label for="effector_signal_peptide">Signal peptide?<br></label>
+					<input class="form_control" type="radio" name="effector_signal_peptide"
+					value={{ post_effector_signal_peptide }} >
+				</div>
 				<!-- <div class="form_group"> -->
 				<!-- 	<label for="effector_sequence">or upload a FASTA file<br></label> -->
 				<!-- 	<input class="form_control" type="file" name="fasta" placeholder="Upload file"/> -->

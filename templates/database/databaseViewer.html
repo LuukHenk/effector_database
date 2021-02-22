@@ -25,41 +25,56 @@
 
 		<div class="main_page">
 			<div class="search_area" id="search_area">
-				<form method="get">
+				<form method="post">
+					{% csrf_token %}
 					<div class="item_block">
 						<label for="search_filter.form.effector_id">Effector ID</label>
 						<input id="search_filter.form.effector_id" type="text" name="effector_id"
-						placeholder="fasta_123">
+					   placeholder="fasta_123" value={{ search_effector_id }}>
 					</div>
 
 
 					<div class="item_block">
 						<label for="search_filter.form.effector_sequence">DNA sequence</label>
 						<input id="search_filter.form.effector_sequence" type="text" name="effector_sequence"
-						placeholder="ACTG">
+						placeholder="ACTG" value={{ search_effector_sequence }}>
 					</div>
 
 					<div class="submit_buttom_area">
-						<input type="Submit" value="Search">
+						<input type="submit" value="Search">
 					</div>
 				</form>
 			</div>
+
+			<p>{{ error_message }}</p>
 
 			<table id="effector_sequence_table">
 				<tr>
 					<th>Effector ID</th>
 					<th>DNA sequence</th>
+					<th></th>
 				</tr>
 				{% if effector_sequences %}
 					{% for effector_sequence in effector_sequences %}
 						<tr>
 							<td>{{ effector_sequence.effector_id }}</td>
 							<td>{{ effector_sequence.effector_sequence }}</td>
+							<td>
+								<form action="{% url 'database:deleteSequence' %}" method="post">
+									{% csrf_token %}
+									<input type="hidden" value={{ effector_sequence.effector_id }}
+									name="effector_id">
+									<input type="hidden" value={{ effector_sequence.effector_sequence }}
+									name="effector_sequence">
+									<input type="submit" value="Delete">
+								</form>
+							</td>
 						</tr>
 					{% endfor %}
 				{% else %}
 					<tr>
 						<td>No data available</td>
+						<td></td>
 						<td></td>
 					</tr>
 				{% endif %}

@@ -2,6 +2,8 @@ Current database version: 0.0.1
 
 ## Todo
 ### High priority for next version
+Add readme
+	- Show how to add new elements in the database
 
 ### Low priority for next version
 submit page
@@ -11,24 +13,17 @@ submit page
 		https://docs.djangoproject.com/en/3.1/topics/forms/
 	- Keep filled in text in the input area
 	- Add file support
-	- Link submission to confirmation page
-
-
-Confirmation page
-	- Create
-	- Mention that a duplicate is changed
+	- Send succes message after submission
 
 Database viewer
 	- Keep filled in text in the input area
 	- Limit table size
+	- add error message to page after failed deletion
 
-Add readme
-	- Show how to add new elements in the database
 
-Move the css header area to a different file
 
 ## In progress
-Luuk: Style the database viewer
+Split the css header and main page file
 
 ## Finished
 Link a database
@@ -39,9 +34,9 @@ Make a database viewer
 # Ideas
 
 # References
-- Video over how to make a search filter
+- How to make a search filter
 	https://www.youtube.com/watch?v=G-Rct7Na0UQ
 - CSS tips
 	https://www.w3.org/Style/Examples/007/center.en.html
-- Form templatees
+- Form templates
 	https://www.jotform.com/form-templates/category/content-forms
