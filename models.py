@@ -5,16 +5,17 @@ class Sequence(models.Model):
     """ Information about an effector ID it's sequence """
     effector_id = models.CharField(
         max_length=150,
-        primary_key=True,
-        unique=True
+        unique=True,
+        primary_key=True
     )
     effector_sequence = models.TextField(
-        max_length=10000
+        max_length=10000,
+        null=True
     )
     effector_name = models.CharField(
         max_length=150,
         blank=True,
-        null=True
+        default=""
     )
     effector_description = models.TextField(
         max_length=2000,

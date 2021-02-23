@@ -26,8 +26,7 @@
 		<div class="main_page">
 			<a href={% url 'database:itemViewer' 'itemOne' %}>itemviewer</a>
 			<div class="search_area" id="search_area">
-				<form method="post">
-					{% csrf_token %}
+				<form method="get">
 					<div class="item_block">
 						<label for="effector_id">Effector ID</label>
 						<input id="effector_id" type="text" name="effector_id"
