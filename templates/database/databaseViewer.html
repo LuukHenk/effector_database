@@ -28,16 +28,25 @@
 				<form method="post">
 					{% csrf_token %}
 					<div class="item_block">
-						<label for="search_filter.form.effector_id">Effector ID</label>
-						<input id="search_filter.form.effector_id" type="text" name="effector_id"
-					   placeholder="fasta_123" value={{ search_effector_id }}>
+						<label for="effector_id">Effector ID</label>
+						<input id="effector_id" type="text" name="effector_id"
+					   placeholder="fasta_123" value={{ effector_id }}>
 					</div>
 
+					<div class="item_block">
+						<label for="effector_name">Effector name</label>
+						<input id="effector_name" type="text" name="effector_name"
+						placeholder="Effector A" value={{ effector_name }}>
+					</div>
 
 					<div class="item_block">
-						<label for="search_filter.form.effector_sequence">DNA sequence</label>
-						<input id="search_filter.form.effector_sequence" type="text" name="effector_sequence"
-						placeholder="ACTG" value={{ search_effector_sequence }}>
+						<label for="effector_signal_peptide">Signal peptide</label>
+						<select id="effector_signal_peptide" name="effector_signal_peptide" >
+							<option value="" {% if effector_signal_peptide == '' %} selected {% endif %} ></option>
+
+							<option value="T" {% if effector_signal_peptide == 'T' %} selected {% endif %} >True</option>
+							<option value="F" {% if effector_signal_peptide == 'F' %} selected {% endif %} >False</option>
+						</select>
 					</div>
 
 					<div class="submit_buttom_area">
@@ -51,21 +60,22 @@
 			<table id="effector_sequence_table">
 				<tr>
 					<th>Effector ID</th>
-					<th>DNA sequence</th>
-					<th></th>
+					<th>Effector name</th>
+					<th>Signal peptide?</th>
 				</tr>
-				{% if effector_sequences %}
-					{% for effector_sequence in effector_sequences %}
+				{% if query_set %}
+					{% for item in query_set %}
 						<tr>
-							<td>{{ effector_sequence.effector_id }}</td>
-							<td>{{ effector_sequence.effector_sequence }}</td>
+							<td>{{ item.effector_id }}</td>
+							<td>{{ item.effector_name }}</td>
+							<td>{{ item.effector_signal_peptide }}</td>
 							<td>
 								<form action="{% url 'database:deleteSequence' %}" method="post">
 									{% csrf_token %}
 									<input type="hidden" value={{ effector_sequence.effector_id }}
 									name="effector_id">
-									<input type="hidden" value={{ effector_sequence.effector_sequence }}
-									name="effector_sequence">
+									<input type="hidden" value={{ effector_sequence.effector_name }}
+									name="effector_name">
 									<input type="submit" value="Delete">
 								</form>
 							</td>

@@ -11,7 +11,12 @@ class Sequence(models.Model):
     effector_sequence = models.TextField(max_length=10.000)
     effector_name = models.CharField(max_length=200, null=True)
     effector_description = models.TextField(max_length=2.000, null=True)
-    effector_signal_peptide = models.BooleanField(default=False)
+    effector_signal_peptide = models.CharField(
+        max_length=1,
+        choices=[("T", "True"), ("F", "False"), ("", "")],
+        default="",
+        blank=True
+    )
 
     def __str__(self):
         return self.effector_id

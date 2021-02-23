@@ -32,31 +32,36 @@
 				<div class="form_group">
 					<label for="effector_id">Effector ID<br></label>
 					<input class="form_control" type="text" name="effector_id" placeholder="fasta_123"
-				   value={{ post_effector_id }} >
+				   value={{ effector_id }} >
 				</div>
 
 				<div class="form_group">
 					<label for="effector_sequence">DNA sequence<br></label>
 					<input class="form_control" type="text" name="effector_sequence" placeholder="ACTG"
-					value={{ post_effector_sequence }} >
+					value={{ effector_sequence }} >
 				</div>
 
 				<div class="form_group">
 					<label for="effector_name">Effector name<br></label>
 					<input class="form_control" type="text" name="effector_name" placeholder="effector A"
-					value={{ post_effector_name }} >
+					value={{ effector_name }} >
 				</div>
 
 				<div class="form_group">
 					<label for="effector_description">Description<br></label>
 					<input class="form_control" type="text" name="effector_description" placeholder=""
-					value={{ post_effector_description }} >
+					value={{ effector_description }} >
 				</div>
 
 				<div class="form_group">
 					<label for="effector_signal_peptide">Signal peptide?<br></label>
-					<input class="form_control" type="checkbox" name="effector_signal_peptide"
-					value="" {{ post_effector_signal_peptide }}>
+					<select class="form_control" name="effector_signal_peptide">
+						<option value="" {% if effector_signal_peptide == '' %} selected {% endif %} ></option>
+						<option value="T" {% if effector_signal_peptide == 'T' %} selected {% endif %}>
+						True</option>
+						<option value="F" {% if effector_signal_peptide == 'F' %} selected {% endif %}>
+						False</option>
+					</select>
 				</div>
 
 				<!-- <div class="form_group"> -->
