@@ -24,6 +24,7 @@
 
 
 		<div class="main_page">
+			<a href={% url 'database:itemViewer' 'itemOne' %}>itemviewer</a>
 			<div class="search_area" id="search_area">
 				<form method="post">
 					{% csrf_token %}
@@ -62,28 +63,29 @@
 					<th>Effector ID</th>
 					<th>Effector name</th>
 					<th>Signal peptide?</th>
+					<th></th>
 				</tr>
 				{% if query_set %}
 					{% for item in query_set %}
 						<tr>
+
 							<td>{{ item.effector_id }}</td>
 							<td>{{ item.effector_name }}</td>
-							<td>{{ item.effector_signal_peptide }}</td>
 							<td>
-								<form action="{% url 'database:deleteSequence' %}" method="post">
-									{% csrf_token %}
-									<input type="hidden" value={{ effector_sequence.effector_id }}
-									name="effector_id">
-									<input type="hidden" value={{ effector_sequence.effector_name }}
-									name="effector_name">
-									<input type="submit" value="Delete">
-								</form>
+								{% if item.effector_signal_peptide == 'T' %}True
+								{% elif item.effector_signal_peptide == 'F'%}False
+								{% else %}
+								{% endif %}
 							</td>
+							<td><a href="{% url 'database:itemViewer' item.effector_id %}">
+								<button>View</button>
+							</a></td>
 						</tr>
 					{% endfor %}
 				{% else %}
 					<tr>
 						<td>No data available</td>
+						<td></td>
 						<td></td>
 						<td></td>
 					</tr>

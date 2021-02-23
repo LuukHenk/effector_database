@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
 from .models import Sequence
@@ -64,8 +64,15 @@ def databaseViewer(request):
         effector_name__icontains=context["effector_name"],
         effector_signal_peptide__icontains=context["effector_signal_peptide"]
     )
-
     return render(request, "database/databaseViewer.html", context)
+
+def itemViewer(request, item_name):
+    context = {
+        "error_message": "",
+        "item": get_object_or_404(Sequence, pk=item_name)
+    }
+    return render(request, "database/itemViewer.html", context)
+
 
 def deleteSequence(request):
     error_message = ""

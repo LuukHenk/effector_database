@@ -1,0 +1,105 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport"
+			  content="width=device-width, initial-scale=1.0">
+		<title>Effector database</title>
+
+		<link rel="stylesheet" type="text/css"
+			  href="{% static 'database/databaseViewer.css' %}">
+	</head>
+
+	<body>
+		<header class="title_area">
+			<h1 class="title_area--title">Effector database</h1>
+		</header>
+
+		<div class="banner">
+			<a class="banner_item banner_item--active" href="{% url 'database:databaseViewer' %}">Database</a>
+			<a class="banner_item" href="{% url 'database:submit' %}">Add sequence</a>
+		</div>
+
+
+		<div class="main_page">
+
+			<a class="back_button" href="{% url 'database:databaseViewer' %}">Back to database</a>
+
+			<div class="error_banner">
+				{% if error_message %}<p><strong>{{error_message}}</p></strong>{% endif %}
+			</div>
+
+			<div class="item_area">
+
+				<div class="item_block">
+					<div class="item_block--title-area">
+						<h3 class="item_block--title">
+							Effector ID
+						</h3>
+					</div>
+					<div class="item_block--context-area">
+						<p class="item_block--context">
+							{{ item.effector_id }}
+						</p>
+					</div>
+				</div>
+
+				<div class="item_block">
+					<div class="item_block--title-area">
+						<h3 class="item_block--title">
+							Effector name
+						</h3>
+					</div>
+					<div class="item_block--context-area">
+						<p class="item_block--context">
+							{{ item.effector_name }}
+						</p>
+					</div>
+				</div>
+
+				<div class="item_block">
+					<div class="item_block--title-area">
+						<h3 class="item_block--title">
+							Signal peptide?
+						</h3>
+					</div>
+					<div class="item_block--context-area">
+						<p class="item_block--context">
+							{{ item.effector_signal_peptide }}
+						</p>
+					</div>
+				</div>
+
+				<div class="item_block">
+					<div class="item_block--title-area">
+						<h3 class="item_block--title">
+							Effector description
+						</h3>
+					</div>
+					<div class="item_block--context-area">
+						<p class="item_block--context">
+							{{ item.effector_description }}
+						</p>
+					</div>
+				</div>
+
+				<div class="item_block">
+					<div class="item_block--title-area">
+						<h3 class="item_block--title">
+							Effector sequence
+						</h3>
+					</div>
+					<div class="item_block--context-area">
+						<p class="item_block--context">
+							{{ item.effector_sequence }}
+						</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</body>
+</html>
+
