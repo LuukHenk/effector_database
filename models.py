@@ -4,13 +4,23 @@ from django.db import models
 class Sequence(models.Model):
     """ Information about an effector ID it's sequence """
     effector_id = models.CharField(
-        max_length=50,
+        max_length=150,
         primary_key=True,
         unique=True
     )
-    effector_sequence = models.TextField(max_length=10.000)
-    effector_name = models.CharField(max_length=50, null=True)
-    effector_description = models.TextField(max_length=2.000, null=True)
+    effector_sequence = models.TextField(
+        max_length=10000
+    )
+    effector_name = models.CharField(
+        max_length=150,
+        blank=True,
+        null=True
+    )
+    effector_description = models.TextField(
+        max_length=2000,
+        blank=True,
+        null=True
+    )
     effector_signal_peptide = models.CharField(
         max_length=1,
         choices=[("T", "True"), ("F", "False"), ("", "")],

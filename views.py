@@ -3,16 +3,33 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
 from .models import Sequence
+from .forms import SequenceForm
 
 def index(request):
     return render(request, "database/index.html")
 
 def submit(request):
-    return render(request, "database/submit.html")
+    form = SequenceForm()
+    return render(request, "database/submit.html", {"form": form})
 
 def submitted(request):
     try:
+        if request.method == "POST":
+            form = SequenceForm(request.POST)
+
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect(reverse("database:databaseViewer"))
+
+        else:
+            form = SequenceForm()
+
+        for x in form:
+            print(x.errors)
+        # return render(request, "database/submit.html", form)
+
         context = {
+            "form": form,
             "effector_id": request.POST.get("effector_id", ""),
             "effector_sequence": request.POST.get("effector_sequence", ""),
             "effector_name": request.POST.get("effector_name", ""),

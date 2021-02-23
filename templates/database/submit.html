@@ -8,8 +8,8 @@
 			  content="width=device-width, initial-scale=1.0">
 		<title>Effector database</title>
 
-		<link rel="stylesheet" type="text/css"
-			  href="{% static 'database/submit.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'database/basepage.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'database/submit.css' %}">
 	</head>
 
 	<body>
@@ -18,57 +18,14 @@
 		</header>
 
 		<div class="banner">
-			<a class="banner_item" href="{% url 'database:databaseViewer' %}">Database</a>
+			<a class="banner_item banner_item--nonactive" href="{% url 'database:databaseViewer' %}">Database</a>
 			<a class="banner_item banner_item--active" href="{% url 'database:submit' %}">Add sequence</a>
 		</div>
 
 		<div class="form_wrapper">
-			<div class="error_banner">
-				{% if error_message %}<p><strong>{{error_message}}</p></strong>{% endif %}
-			</div>
-
 			<form action="{% url 'database:submitted' %}" method="post">
 				{% csrf_token %}
-				<div class="form_group">
-					<label for="effector_id">Effector ID<br></label>
-					<input class="form_control" type="text" name="effector_id" placeholder="fasta_123"
-				   value={{ effector_id }} >
-				</div>
-
-				<div class="form_group">
-					<label for="effector_sequence">DNA sequence<br></label>
-					<input class="form_control" type="text" name="effector_sequence" placeholder="ACTG"
-					value={{ effector_sequence }} >
-				</div>
-
-				<div class="form_group">
-					<label for="effector_name">Effector name<br></label>
-					<input class="form_control" type="text" name="effector_name" placeholder="effector A"
-					value={{ effector_name }} >
-				</div>
-
-				<div class="form_group">
-					<label for="effector_description">Description<br></label>
-					<input class="form_control" type="text" name="effector_description" placeholder=""
-					value={{ effector_description }} >
-				</div>
-
-				<div class="form_group">
-					<label for="effector_signal_peptide">Signal peptide?<br></label>
-					<select class="form_control" name="effector_signal_peptide">
-						<option value="" {% if effector_signal_peptide == '' %} selected {% endif %} ></option>
-						<option value="T" {% if effector_signal_peptide == 'T' %} selected {% endif %}>
-						True</option>
-						<option value="F" {% if effector_signal_peptide == 'F' %} selected {% endif %}>
-						False</option>
-					</select>
-				</div>
-
-				<!-- <div class="form_group"> -->
-				<!-- 	<label for="effector_sequence">or upload a FASTA file<br></label> -->
-				<!-- 	<input class="form_control" type="file" name="fasta" placeholder="Upload file"/> -->
-				<!-- </div> -->
-
+				{{ form }}
 				<input type="submit" value="Submit">
 			</form>
 		</div>

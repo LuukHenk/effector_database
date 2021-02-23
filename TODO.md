@@ -2,6 +2,11 @@ Current database version: 0.0.1
 
 ## Todo
 ### High priority for next version
+Split the css header and main page file
+
+Item viewer
+	- format style
+	- Add a delete/edit button
 
 ### Low priority for next version
 submit page
@@ -13,9 +18,6 @@ submit page
 	- Add file support
 	- Send succes message after submission
 
-Item viewer
-	- format style
-	- Add a delete button
 
 Database viewer
 	- Keep filled in text in the input area
@@ -25,7 +27,6 @@ Database viewer
 Add readme
 
 ## In progress
-Split the css header and main page file
 
 ## Finished
 Link a database
