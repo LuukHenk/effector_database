@@ -121,3 +121,14 @@ input[type=submit]:hover {
 .banner_item--nonactive:hover {
 	border-bottom: solid 3px var(--clr-border);
 }
+.message {
+	margin: 0.5rem 0 0 0;
+}
+.message-success {
+	color: green;
+	font-weight: bold;
+}
+.message-error {
+	color: red;
+	font-weight: bold;
+}

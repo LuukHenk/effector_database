@@ -2,11 +2,7 @@ Current database version: 0.0.1
 
 ## Todo
 ### High priority for next version
-submit page
-	- Send succes message after submission
-
 Item viewer
-	- Style page
 	- Add a edit button/page
 
 Add readme
@@ -14,7 +10,11 @@ Add annotation
 
 ### Low priority for next version
 submit page
+	- Manually add the form items/message
 	- Add file support (for next version)
+
+Search page
+	- show current search filters above table (e.g. "Showing effector ID's containing 'aaa'")
 
 ItemViewer
 	- Ask for confirmation at deletion (for next version)

@@ -20,6 +20,8 @@ def submitted(request):
 
         if form.is_valid():
             form.save()
+            message = "Succesfully added '{}'".format(form.cleaned_data['effector_id'])
+            messages.success(request, message)
             return HttpResponseRedirect(reverse("database:search"))
 
     else:
