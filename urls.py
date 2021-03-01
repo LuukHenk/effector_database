@@ -9,5 +9,6 @@ urlpatterns = [
     path("submitted", views.submitted, name="submitted"),
     path("search", views.search, name="search"),
     path("itemViewer/<str:item_name>", views.itemViewer, name="itemViewer"),
-    path("deleteSequence/<str:item_name>", views.deleteSequence, name="deleteSequence"),
+    path("deleteItem/<str:item_name>", views.deleteItem, name="deleteItem"),
+    # path("deleteSequ/<str:item_name>", views.deleteSequence, name="deleteSequence"),
 ]

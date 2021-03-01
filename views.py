@@ -50,7 +50,7 @@ def itemViewer(request, item_name):
     return render(request, "database/itemViewer.html", context)
 
 
-def deleteSequence(request, item_name):
+def deleteItem(request, item_name):
     try:
         item = Sequence.objects.get(effector_id=item_name)
         Sequence.objects.get(effector_id=item_name).delete()
