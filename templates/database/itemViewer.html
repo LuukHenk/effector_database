@@ -8,8 +8,8 @@
 			  content="width=device-width, initial-scale=1.0">
 		<title>Effector database</title>
 
-		<link rel="stylesheet" type="text/css"
-			  href="{% static 'database/databaseViewer.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'database/basepage.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'database/itemViewer.css' %}">
 	</head>
 
 	<body>
@@ -18,18 +18,21 @@
 		</header>
 
 		<div class="banner">
-			<a class="banner_item banner_item--active" href="{% url 'database:databaseViewer' %}">Database</a>
+			<a class="banner_item banner_item--active" href="{% url 'database:search' %}">Database</a>
 			<a class="banner_item" href="{% url 'database:submit' %}">Add sequence</a>
 		</div>
 
 
 		<div class="main_page">
 
-			<a class="back_button" href="{% url 'database:databaseViewer' %}">Back to database</a>
+			<a class="back_button" href="{% url 'database:search' %}">Back to database</a>
 
-			<div class="error_banner">
-				{% if error_message %}<p><strong>{{error_message}}</p></strong>{% endif %}
-			</div>
+			{% if messages %}
+			<div class="messages">
+				{% for message in messages %}
+					<p class="message">{{message}}</p>
+				{% endfor %}
+			{% endif %}
 
 			<div class="item_area">
 
@@ -98,6 +101,8 @@
 					</div>
 				</div>
 
+				<a>Edit</a>
+				<a href="{% url 'database:deleteSequence' item.effector_id %}">Delete</a>
 			</div>
 		</div>
 	</body>

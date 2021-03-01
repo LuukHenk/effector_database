@@ -1,6 +1,7 @@
 .form_wrapper {
 	width: 80%;
 	margin: 0 auto;
+	padding: 0.5rem 0;
 }
 .errorlist {
 	list-style-type: none;
@@ -9,25 +10,13 @@
 	padding: 0;
 	margin: 0;
 }
-input[type=text], textarea, select {
-	width: 100%;
-	padding: 12px 20px;
-	margin: 8px 0;
-	display: inline-block;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-sizing: border-box;
-}
 input[type=submit] {
 	width: 100%;
-	background-color: #059;
+	background-color: var(--clr-banner-active);
 	color: #FFF;
 	padding: 14px 20px;
 	margin: 8px 0;
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
-}
-input[type=submit]:hover {
-	background-color: #004a87;
 }

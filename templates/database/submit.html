@@ -18,9 +18,16 @@
 		</header>
 
 		<div class="banner">
-			<a class="banner_item banner_item--nonactive" href="{% url 'database:databaseViewer' %}">Database</a>
+			<a class="banner_item banner_item--nonactive" href="{% url 'database:search' %}">Database</a>
 			<a class="banner_item banner_item--active" href="{% url 'database:submit' %}">Add sequence</a>
 		</div>
+
+		{% if messages %}
+		<div class="messages">
+			{% for message in messages %}
+				<p class="message">{{message}}</p>
+			{% endfor %}
+		{% endif %}
 
 		<div class="form_wrapper">
 			<form action="{% url 'database:submitted' %}" method="post">

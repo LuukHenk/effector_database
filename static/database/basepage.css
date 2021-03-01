@@ -3,27 +3,29 @@
 	--fs-h1: 2rem;
 	--fs-h2: 1.5rem;
 	--fs-h3: 1.1rem;
-
+	--fs-body: 0.7rem;
 	--clr-body-bg: #FFF;
 	--clr-border: #ddd;
 	--clr-banner-active: #059;
+	--clr-search-bar-hover: #004a87;
 }
-
 @media (min-width: 600px) {
 	:root {
 		--fs-h1: 3rem;
 		--fs-h2: 2.25rem;
 		--fs-h3: 1.125rem;
+		--fs-body: 0.8rem;
 	}
 }
-
 @media (min-width: 900px) {
 	:root {
 		--fs-h1: 3.5rem;
 		--fs-h2: 2.75rem;
 		--fs-h3: 1.125rem;
+		--fs-body: 1rem;
 	}
 }
+
 /* General styles */
 * {
   box-sizing: border-box;
@@ -38,11 +40,38 @@ body {
 	line-height: 1.6;
 	margin: 0 auto;
     width: 90%;
+	padding-bottom: 1rem;
 }
 h1,h2,h3 {
 	line-height: 1.1;
 	margin: 0;
 }
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+/* Input box styles */
+input[type=text], textarea, select {
+	width: 100%;
+	padding: 0.5rem 0.5rem;
+	margin: 0.5rem 0;
+	border: 1px solid var(--clr-border);
+	border-radius: 4px;
+	box-sizing: border-box;
+	outline: none;
+}
+input[type=text]:focus, textarea:focus, select:focus {
+	box-shadow: 0 0 0 2px #09C;
+}
+label {
+	font-size: 1rem;
+	padding-right: 1rem;
+}
+input[type=submit]:hover {
+	background-color: var(--clr-search-bar-hover);
+}
+
 
 .title_area {
 	height: 4rem;
@@ -88,4 +117,7 @@ h1,h2,h3 {
 }
 .banner_item--nonactive {
 	border-bottom: solid 3px var(--clr-body-bg);
+}
+.banner_item--nonactive:hover {
+	border-bottom: solid 3px var(--clr-border);
 }

@@ -7,7 +7,7 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("submit", views.submit, name="submit"),
     path("submitted", views.submitted, name="submitted"),
-    path("databaseViewer", views.databaseViewer, name="databaseViewer"),
+    path("search", views.search, name="search"),
     path("itemViewer/<str:item_name>", views.itemViewer, name="itemViewer"),
-    path("deleteSequence", views.deleteSequence, name="deleteSequence"),
+    path("deleteSequence/<str:item_name>", views.deleteSequence, name="deleteSequence"),
 ]
