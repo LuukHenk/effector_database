@@ -54,10 +54,10 @@ def deleteSequence(request, item_name):
     try:
         item = Sequence.objects.get(effector_id=item_name)
         Sequence.objects.get(effector_id=item_name).delete()
-        messages.info(request, "Deleted sequence with effector ID '{}'".format(item_name))
+        message = "Succesfully deleted sequence with effector ID '{}'".format(item_name)
+        messages.success(request, message)
 
     except ObjectDoesNotExist:
-        print("does not exist")
         error_message = "ERROR - Sequence with effector ID '{}' does not exists".format(item_name)
         messages.error(request, error_message)
         return HttpResponseRedirect(reverse("database:search"))
