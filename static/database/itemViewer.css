@@ -1,3 +1,33 @@
+.message {
+	padding-left: 0.5rem;
+}
+/* Items */
+.items {
+	font-size: var(--fs-body);
+	margin: 1rem;
+	word-wrap: break-word;
+	display: grid;
+	grid-template-columns: 25% 74%;
+}
+@media (min-width: 600px) {
+	.items {grid-template-columns: 20% 79%;}
+}
+@media (min-width: 900px) {
+	.items{grid-template-columns: 16% 83%;}
+}
+.item_area{
+	padding: 0.5rem;
+	border-bottom: 1px solid var(--clr-border);
+}
+.title {
+	font-weight: bold;
+	text-align: right;
+}
+.item {
+	text-align: left;
+	padding-left: 1rem;
+}
+
 /* Buttons */
 .button_area {
 	display: grid;
@@ -29,31 +59,5 @@
 .delete_button {
 	width: 80%;
 	background-color: #d60000;
-}
-
-/* Items */
-.item_area{
-	padding: 0.5rem;
-}
-.items {
-	font-size: var(--fs-body);
-	margin-left: 1rem;
-	word-wrap: break-word;
-	display: grid;
-	grid-template-columns: 25% 74%;
-}
-@media (min-width: 600px) {
-	.items {grid-template-columns: 20% 79%;}
-}
-@media (min-width: 900px) {
-	.items{grid-template-columns: 16% 83%;}
-}
-.title {
-	font-weight: bold;
-	text-align: right;
-}
-.item {
-	text-align: left;
-	padding-left: 1rem;
 }
 

@@ -2,15 +2,11 @@ Current database version: 0.0.1
 
 ## Todo
 ### High priority for next version
-Item viewer
-	- Add a edit button/page
-
 Add readme
 Add annotation
 
 ### Low priority for next version
 submit page
-	- Manually add the form items/message
 	- Add file support (for next version)
 
 Search page
@@ -29,7 +25,7 @@ Link a database
 Make a home page
 Make a submit page
 Make a database viewer
-Make a item view page with delete button
+Make a item view page with delete button and edit button/page
 
 # Ideas
 
