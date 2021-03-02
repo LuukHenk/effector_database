@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport"
+			  content="width=device-width, initial-scale=1.0">
+		<title>Effector database</title>
+
+		<link rel="stylesheet" type="text/css" href="{% static 'database/basepage.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'database/submit.css' %}">
+	</head>
+
+	<body>
+		<header class="title_area">
+			<h1 class="title_area--title">Effector database</h1>
+		</header>
+
+		<div class="banner">
+			<a class="banner_item banner_item--nonactive" href="{% url 'database:search' %}">Database</a>
+			<a class="banner_item banner_item--active" href="{% url 'database:editItem' item_name %}">Edit sequence</a>
+		</div>
+
+		{% if messages %}
+			{% for message in messages %}
+				<p class="message message-{{message.tags}}">{{message}}</p>
+			{% endfor %}
+		{% endif %}
+
+		<div class="form_wrapper">
+			<form action="{% url 'database:updatedItem' item_name %}" method="post">
+				{% csrf_token %}
+				{{ form }}
+				<input type="submit" value="Submit">
+			</form>
+		</div>
+
+	</body>
+</html>
+

@@ -64,7 +64,7 @@
 
 			<div class="button_area">
 				<a class="button back_button" href="{% url 'database:search' %}">Back to database</a>
-				<a class="button edit_button">Edit</a>
+				<a class="button edit_button" href="{% url 'database:editItem' item.effector_id %}">Edit</a>
 				<a class=" button delete_button"
 				href="{% url 'database:deleteItem' item.effector_id %}">Delete</a>
 			</div>

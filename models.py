@@ -6,7 +6,7 @@ class Sequence(models.Model):
     effector_id = models.CharField(
         max_length=150,
         unique=True,
-        primary_key=True
+        primary_key=True,
     )
     effector_sequence = models.TextField(
         max_length=10000,

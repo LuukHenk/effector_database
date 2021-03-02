@@ -70,19 +70,21 @@
 				</tr>
 				{% if query_set %}
 					{% for item in query_set %}
-						<tr>
-							<td>
-								{{ item.effector_id }}</td>
-							<td>{{ item.effector_name }}</td>
-							<td>
-								{% if item.effector_signal_peptide == 'T' %}True
-								{% elif item.effector_signal_peptide == 'F'%}False
-								{% else %}
-								{% endif %}
-							</td>
-							<td class="view_item--col"><a class="view_item--link"
-							href="{% url 'database:itemViewer' item.effector_id %}">View</a></td>
-						</tr>
+						{% if item %}
+							<tr>
+								<td>
+									{{ item.effector_id }}</td>
+								<td>{{ item.effector_name }}</td>
+								<td>
+									{% if item.effector_signal_peptide == 'T' %}True
+									{% elif item.effector_signal_peptide == 'F'%}False
+									{% else %}
+									{% endif %}
+								</td>
+								<td class="view_item--col"><a class="view_item--link"
+								href="{% url 'database:itemViewer' item.effector_id %}">View</a></td>
+							</tr>
+						{% endif %}
 					{% endfor %}
 				{% else %}
 					<tr>

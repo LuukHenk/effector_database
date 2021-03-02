@@ -10,5 +10,6 @@ urlpatterns = [
     path("search", views.search, name="search"),
     path("itemViewer/<str:item_name>", views.itemViewer, name="itemViewer"),
     path("deleteItem/<str:item_name>", views.deleteItem, name="deleteItem"),
-    # path("deleteSequ/<str:item_name>", views.deleteSequence, name="deleteSequence"),
+    path("editItem/<str:item_name>", views.editItem, name="editItem"),
+    path("updatedItem/<str:item_name>", views.updatedItem, name="updatedItem"),
 ]
