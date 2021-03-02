@@ -8,8 +8,8 @@
 			  content="width=device-width, initial-scale=1.0">
 		<title>Effector database</title>
 
-		<link rel="stylesheet" type="text/css" href="{% static 'database/basepage.css' %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'database/itemViewer.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'effector_database/basepage.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'effector_database/itemViewer.css' %}">
 	</head>
 
 	<body>
@@ -18,8 +18,8 @@
 		</header>
 
 		<div class="banner">
-			<a class="banner_item banner_item--active" href="{% url 'database:search' %}">Database</a>
-			<a class="banner_item" href="{% url 'database:submit' %}">Add sequence</a>
+			<a class="banner_item banner_item--active" href="{% url 'effector_database:search' %}">Database</a>
+			<a class="banner_item" href="{% url 'effector_database:submit' %}">Add sequence</a>
 		</div>
 
 
@@ -62,12 +62,11 @@
 			</dl>
 
 			<div class="button_area">
-				<a class="button back_button" href="{% url 'database:search' %}">Back to database</a>
-				<a class="button edit_button" href="{% url 'database:editItem' item.effector_id %}">Edit</a>
+				<a class="button back_button" href="{% url 'effector_database:search' %}">Back to database</a>
+				<a class="button edit_button" href="{% url 'effector_database:editItem' item.effector_id %}">Edit</a>
 				<a class=" button delete_button"
-				href="{% url 'database:deleteItem' item.effector_id %}">Delete</a>
+				href="{% url 'effector_database:deleteItem' item.effector_id %}">Delete</a>
 			</div>
 		</div>
 	</body>
 </html>
-

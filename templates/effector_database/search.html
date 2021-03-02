@@ -8,8 +8,8 @@
 			  content="width=device-width, initial-scale=1.0">
 		<title>Effector database</title>
 
-		<link rel="stylesheet" type="text/css" href="{% static 'database/basepage.css' %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'database/search.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'effector_database/basepage.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'effector_database/search.css' %}">
 	</head>
 
 	<body>
@@ -18,8 +18,8 @@
 		</header>
 
 		<div class="banner">
-			<a class="banner_item banner_item--active" href="{% url 'database:search' %}">Database</a>
-			<a class="banner_item banner_item--nonactive" href="{% url 'database:submit' %}">Add sequence</a>
+			<a class="banner_item banner_item--active" href="{% url 'effector_database:search' %}">Database</a>
+			<a class="banner_item banner_item--nonactive" href="{% url 'effector_database:submit' %}">Add sequence</a>
 		</div>
 
 
@@ -98,4 +98,3 @@
 		</div>
 	</body>
 </html>
-

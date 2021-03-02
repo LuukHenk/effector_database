@@ -9,11 +9,11 @@ from .models import Sequence
 from .forms import SequenceForm
 
 def index(request):
-    return HttpResponseRedirect(reverse("database:search"))
+    return HttpResponseRedirect(reverse("effector_database:search"))
 
 def submit(request):
     form = SequenceForm(label_suffix='')
-    return render(request, "database/submit.html", {"form": form})
+    return render(request, "effector_database/submit.html", {"form": form})
 
 def submitted(request):
     if request.method == "POST":
@@ -23,12 +23,12 @@ def submitted(request):
             form.save()
             message = "Succesfully added '{}'".format(form.cleaned_data['effector_id'])
             messages.success(request, message)
-            return HttpResponseRedirect(reverse("database:search"))
+            return HttpResponseRedirect(reverse("effector_database:search"))
 
     else:
         form = SequenceForm(label_suffix='')
 
-    return render(request, "database/submit.html", {"form": form})
+    return render(request, "effector_database/submit.html", {"form": form})
 
 def search(request):
     context = {
@@ -42,13 +42,13 @@ def search(request):
         effector_name__icontains=context["effector_name"],
         effector_signal_peptide__icontains=context["effector_signal_peptide"]
     )
-    return render(request, "database/search.html", context)
+    return render(request, "effector_database/search.html", context)
 
 def itemViewer(request, item_name):
     context = {
         "item": get_object_or_404(Sequence, pk=item_name)
     }
-    return render(request, "database/itemViewer.html", context)
+    return render(request, "effector_database/itemViewer.html", context)
 
 
 def deleteItem(request, item_name):
@@ -60,14 +60,14 @@ def deleteItem(request, item_name):
     except ObjectDoesNotExist:
         error_message = "ERROR - Sequence with effector ID '{}' does not exists".format(item_name)
         messages.error(request, error_message)
-        return HttpResponseRedirect(reverse("database:search"))
+        return HttpResponseRedirect(reverse("effector_database:search"))
     except:
         error_message = "ERROR - Unknown error"
         messages.error(request, error_message)
-        return HttpResponseRedirect(reverse("database:search"))
+        return HttpResponseRedirect(reverse("effector_database:search"))
 
 
-    return HttpResponseRedirect(reverse("database:search"))
+    return HttpResponseRedirect(reverse("effector_database:search"))
 
 def editItem(request, item_name):
     try:
@@ -75,14 +75,14 @@ def editItem(request, item_name):
             "form": SequenceForm(instance=Sequence.objects.get(effector_id=item_name)),
             "item_name": item_name,
         }
-        return render(request, "database/editItem.html", context)
+        return render(request, "effector_database/editItem.html", context)
 
     except ObjectDoesNotExist:
         error_message = "ERROR - Sequence with effector ID '{}' does not exists".format(item_name)
         messages.error(request, error_message)
-        return HttpResponseRedirect(reverse("database:search"))
+        return HttpResponseRedirect(reverse("effector_database:search"))
 
-    return HttpResponseRedirect(reverse("database:search"))
+    return HttpResponseRedirect(reverse("effector_database:search"))
 
 def updatedItem(request, item_name):
     context = {
@@ -105,15 +105,15 @@ def updatedItem(request, item_name):
                 form.save()
                 message = "Succesfully edited effector ID '{}'".format(form.cleaned_data['effector_id'])
                 messages.success(request, message)
-                return render(request, "database/itemViewer.html", context)
+                return render(request, "effector_database/itemViewer.html", context)
 
         # If no changes were made
         else:
-            return render(request, "database/itemViewer.html", context)
+            return render(request, "effector_database/itemViewer.html", context)
 
     # If there is no post request
     else:
         form = SequenceForm(instance=context["item"], label_suffix='')
 
     context["form"] = form
-    return render(request, "database/editItem.html", context)
+    return render(request, "effector_database/editItem.html", context)
