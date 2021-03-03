@@ -7,7 +7,7 @@ Visitors can view, search, add and edit effectors in the database.
 ### Requirements
 - Python 3 (verrified for v3.7 and v3.8)
 - Django 3 (verrified for v3.1)
-- [Basic knowledge about Django](https://docs.djangoproject.com/en/3.1/intro/)
+- [Basic knowledge about Django. (I would recommend the first two tutorials)](https://docs.djangoproject.com/en/3.1/intro/)
 
 ### Installation
 1. Install this github repository:
