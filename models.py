@@ -8,25 +8,25 @@ class Sequence(models.Model):
         unique=True,
         primary_key=True,
     )
-    effector_sequence = models.TextField(
-        max_length=10000,
-        null=True
-    )
     effector_name = models.CharField(
         max_length=150,
         blank=True,
         default=""
-    )
-    effector_description = models.TextField(
-        max_length=2000,
-        blank=True,
-        null=True
     )
     effector_signal_peptide = models.CharField(
         max_length=1,
         choices=[("T", "True"), ("F", "False"), ("", "")],
         default="",
         blank=True
+    )
+    effector_description = models.TextField(
+        max_length=2000,
+        blank=True,
+        null=True
+    )
+    effector_sequence = models.TextField(
+        max_length=10000,
+        null=True
     )
 
     def __str__(self):
