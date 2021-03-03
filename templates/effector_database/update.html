@@ -19,7 +19,7 @@
 
 		<div class="banner">
 			<a class="banner_item banner_item--nonactive" href="{% url 'effector_database:search' %}">Database</a>
-			<a class="banner_item banner_item--active" href="{% url 'effector_database:editItem' effector_id %}">Edit sequence</a>
+			<a class="banner_item banner_item--active" href="{% url 'effector_database:update' effector_id %}">Edit sequence</a>
 		</div>
 
 		{% if messages %}
@@ -29,7 +29,7 @@
 		{% endif %}
 
 		<div class="form_wrapper">
-			<form action="{% url 'effector_database:updatedItem' effector_id %}" method="post">
+			<form action="{% url 'effector_database:updated' effector_id %}" method="post">
 				{% csrf_token %}
 				{{ form }}
 				<input type="submit" value="Save changes">

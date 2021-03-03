@@ -9,7 +9,7 @@
 		<title>Effector database</title>
 
 		<link rel="stylesheet" type="text/css" href="{% static 'effector_database/basepage.css' %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'effector_database/itemViewer.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'effector_database/view.css' %}">
 	</head>
 
 	<body>
@@ -63,9 +63,9 @@
 
 			<div class="button_area">
 				<a class="button back_button" href="{% url 'effector_database:search' %}">Back to database</a>
-				<a class="button edit_button" href="{% url 'effector_database:editItem' sequence_obj.effector_id %}">Edit</a>
+				<a class="button edit_button" href="{% url 'effector_database:update' sequence_obj.effector_id %}">Edit</a>
 				<a class=" button delete_button"
-				href="{% url 'effector_database:deleteItem' sequence_obj.effector_id %}">Delete</a>
+				href="{% url 'effector_database:delete' sequence_obj.effector_id %}">Delete</a>
 			</div>
 		</div>
 	</body>

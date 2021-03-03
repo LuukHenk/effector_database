@@ -8,8 +8,8 @@ urlpatterns = [
     path("submit", views.submit, name="submit"),
     path("submitted", views.submitted, name="submitted"),
     path("search", views.search, name="search"),
-    path("itemViewer/<str:effector_id>", views.itemViewer, name="itemViewer"),
-    path("deleteItem/<str:effector_id>", views.deleteItem, name="deleteItem"),
-    path("editItem/<str:effector_id>", views.editItem, name="editItem"),
-    path("updatedItem/<str:effector_id>", views.updatedItem, name="updatedItem"),
+    path("view/<str:effector_id>", views.view, name="view"),
+    path("delete/<str:effector_id>", views.delete, name="delete"),
+    path("update/<str:effector_id>", views.update, name="update"),
+    path("updated/<str:effector_id>", views.updated, name="updated"),
 ]
