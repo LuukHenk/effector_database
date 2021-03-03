@@ -1,0 +1,52 @@
+Metadata-Version: 1.1
+Name: effector-database
+Version: 0.1
+Summary: A Django app to view and manage an effector database
+Home-page: https://github.com/luukhenk
+Author: Luuk Perdaems
+Author-email: Luukperdaems@hotmail.com
+License: MIT License
+Description: # Effector database
+        #### Version 0.1.0
+        Effector database is a Django app that contains information about effectors.
+        Visitors can view, search and edit effectors in the database.
+        There is also the option to add new effectors to the database.
+        
+        ## Quick start
+        
+        1. Add "effector_database" to your INSTALLED_APPS setting like this:
+        
+        	```
+            INSTALLED_APPS = [
+                ...
+                'effector_database',
+            ]
+        	```
+        
+        2. Include the effector_database URLconf in your project urls.py like this:
+        
+        	```
+            path('effector_database/', include('effector_database.urls')),
+        	```
+        
+        3. Run `python manage.py migrate` to create the effector_database models.
+        
+        4. Visit http://127.0.0.1:8000/effector_database/ to view the database.
+        
+        5. Additional changes can be made to the database as admin via
+           http://127.0.0.1:8000/admin/ (you'll need the Admin app enabled)
+        
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 3.1
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content

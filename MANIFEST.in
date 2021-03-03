@@ -1,0 +1,5 @@
+include LICENCE.md
+include README.md
+include CHANGELOG.md
+recursive-include effector_database/static *
+recursive-include effector_database/templates *
