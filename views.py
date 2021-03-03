@@ -42,23 +42,24 @@ def search(request):
         effector_name__icontains=context["effector_name"],
         effector_signal_peptide__icontains=context["effector_signal_peptide"]
     )
+    print(context)
     return render(request, "effector_database/search.html", context)
 
-def itemViewer(request, item_name):
+def itemViewer(request, effector_id):
     context = {
-        "item": get_object_or_404(Sequence, pk=item_name)
+        "sequence_obj": get_object_or_404(Sequence, pk=effector_id)
     }
     return render(request, "effector_database/itemViewer.html", context)
 
 
-def deleteItem(request, item_name):
+def deleteItem(request, effector_id):
     try:
-        Sequence.objects.get(effector_id=item_name).delete()
-        message = "Succesfully deleted sequence with effector ID '{}'".format(item_name)
+        Sequence.objects.get(pk=effector_id).delete()
+        message = "Succesfully deleted sequence with effector ID '{}'".format(effector_id)
         messages.success(request, message)
 
     except ObjectDoesNotExist:
-        error_message = "ERROR - Sequence with effector ID '{}' does not exists".format(item_name)
+        error_message = "ERROR - Sequence with effector ID '{}' does not exists".format(effector_id)
         messages.error(request, error_message)
         return HttpResponseRedirect(reverse("effector_database:search"))
     except:
@@ -69,51 +70,50 @@ def deleteItem(request, item_name):
 
     return HttpResponseRedirect(reverse("effector_database:search"))
 
-def editItem(request, item_name):
+def editItem(request, effector_id):
+    """ """
     try:
         context = {
-            "form": SequenceForm(instance=Sequence.objects.get(effector_id=item_name)),
-            "item_name": item_name,
+            "form": SequenceForm(instance=Sequence.objects.get(pk=effector_id)),
+            "effector_id": effector_id,
         }
         return render(request, "effector_database/editItem.html", context)
 
     except ObjectDoesNotExist:
-        error_message = "ERROR - Sequence with effector ID '{}' does not exists".format(item_name)
+        error_message = "ERROR - Sequence with effector ID '{}' does not exists".format(effector_id)
         messages.error(request, error_message)
         return HttpResponseRedirect(reverse("effector_database:search"))
 
     return HttpResponseRedirect(reverse("effector_database:search"))
 
-def updatedItem(request, item_name):
-    context = {
-        "item_name": item_name,
-        "item": get_object_or_404(Sequence, pk=item_name),
-    }
+def updatedItem(request, effector_id):
+    """
+    Process content update of a single sequence from the Sequence model using it's primary key
+    'effector_id'. Unable to update the effector_id, since this breaks current url.
+    """
 
+    # Generate standard context
+    context = {
+        "effector_id": effector_id,
+        "sequence_obj": get_object_or_404(Sequence, pk=effector_id),
+    }
+    context["form"] = SequenceForm(instance=context["sequence_obj"], label_suffix='')
+
+    # Check if new data has been submitted
     if request.method == "POST":
-        form = SequenceForm(request.POST, instance=context["item"], label_suffix='')
+        form = SequenceForm(request.POST, instance=context["sequence_obj"], label_suffix='')
 
         if form.has_changed():
-            # Make user unable to overwrite already existing effector ID
+            # Don't let user change the effector ID
             if "effector_id" in form.changed_data:
-                new_effector_id = form["effector_id"].value()
-                for existing_seq in Sequence.objects.all():
-                    if existing_seq.effector_id == new_effector_id:
-                        form.add_error("effector_id", "Sequence with this Effector id already exists.")
-            # Check if the edit is valid
-            if form.is_valid():
+                messages.error(request, "Only admin change the effector ID")
+            elif form.is_valid():
                 form.save()
-                message = "Succesfully edited effector ID '{}'".format(form.cleaned_data['effector_id'])
+                message = "Succesfully edited effector ID '{}'".format(effector_id)
                 messages.success(request, message)
                 return render(request, "effector_database/itemViewer.html", context)
-
-        # If no changes were made
-        else:
+        else: # No changes made
             return render(request, "effector_database/itemViewer.html", context)
 
-    # If there is no post request
-    else:
-        form = SequenceForm(instance=context["item"], label_suffix='')
-
-    context["form"] = form
+    # Render standard context if nothing had been changed
     return render(request, "effector_database/editItem.html", context)

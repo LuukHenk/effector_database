@@ -69,20 +69,20 @@
 					<th></th>
 				</tr>
 				{% if query_set %}
-					{% for item in query_set %}
-						{% if item %}
+					{% for sequence_obj in query_set %}
+						{% if sequence_obj %}
 							<tr>
 								<td>
-									{{ item.effector_id }}</td>
-								<td>{{ item.effector_name }}</td>
+									{{ sequence_obj.effector_id }}</td>
+								<td>{{ sequence_obj.effector_name }}</td>
 								<td>
-									{% if item.effector_signal_peptide == 'T' %}True
-									{% elif item.effector_signal_peptide == 'F'%}False
+									{% if sequence_obj.effector_signal_peptide == 'T' %}True
+									{% elif sequence_obj.effector_signal_peptide == 'F'%}False
 									{% else %}
 									{% endif %}
 								</td>
 								<td class="view_item--col"><a class="view_item--link"
-								href="{% url 'effector_database:itemViewer' item.effector_id %}">View</a></td>
+								href="{% url 'effector_database:itemViewer' sequence_obj.effector_id %}">View</a></td>
 							</tr>
 						{% endif %}
 					{% endfor %}

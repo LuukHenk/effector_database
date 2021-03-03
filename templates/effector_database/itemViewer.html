@@ -33,39 +33,39 @@
 
 			<dl class="items">
 				<dt class="title item_area ">Effector ID</dt>
-				<dl class="item item_area">{{ item.effector_id }}</dl>
+				<dl class="item item_area">{{ sequence_obj.effector_id }}</dl>
 				<dt class="title item_area">Effector name</dt>
 				<dl class="item item_area">
-					{% if item.effector_name == '' %}-
-					{% else %}{{ item.effector_name }}
+					{% if sequence_obj.effector_name == '' %}-
+					{% else %}{{ sequence_obj.effector_name }}
 					{% endif %}
 				</dl>
 				<dt class="title item_area">Signal peptide?</dt>
 				<dl class="item item_area">
-					{% if item.effector_signal_peptide == 'T' %}True
-					{% elif item.effector_signal_peptide == 'F'%}False
+					{% if sequence_obj.effector_signal_peptide == 'T' %}True
+					{% elif sequence_obj.effector_signal_peptide == 'F'%}False
 					{% else %}-
 					{% endif %}
 				</dl>
 				<dt class="title item_area">Effector description</dt>
 				<dl class="item item_area">
-					{% if item.effector_description == '' %}-
-					{% else %}{{ item.effector_description }}
+					{% if sequence_obj.effector_description == '' %}-
+					{% else %}{{ sequence_obj.effector_description }}
 					{% endif %}
 				</dl>
 				<dt class="title item_area">Effector sequence</dt>
 				<dl class="item item_area">
-					{% if item.effector_sequence == '' %}-
-					{% else %}{{ item.effector_sequence }}
+					{% if sequence_obj.effector_sequence == '' %}-
+					{% else %}{{ sequence_obj.effector_sequence }}
 					{% endif %}
 				</dl>
 			</dl>
 
 			<div class="button_area">
 				<a class="button back_button" href="{% url 'effector_database:search' %}">Back to database</a>
-				<a class="button edit_button" href="{% url 'effector_database:editItem' item.effector_id %}">Edit</a>
+				<a class="button edit_button" href="{% url 'effector_database:editItem' sequence_obj.effector_id %}">Edit</a>
 				<a class=" button delete_button"
-				href="{% url 'effector_database:deleteItem' item.effector_id %}">Delete</a>
+				href="{% url 'effector_database:deleteItem' sequence_obj.effector_id %}">Delete</a>
 			</div>
 		</div>
 	</body>
