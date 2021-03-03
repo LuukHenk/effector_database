@@ -33,6 +33,7 @@ class Sequence(models.Model):
         return self.effector_id
 
 class Species(models.Model):
+    """ Species the effector was found in """
     species = models.CharField(max_length=200, primary_key=True, unique=True)
     isolate = models.CharField(max_length=200)
     interaction_partner = models.CharField(max_length=200)

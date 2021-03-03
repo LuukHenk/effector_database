@@ -1,3 +1,3 @@
 from django.test import TestCase
 
-# Create your tests here.
+# Too lazy to add some tests!??!??!
