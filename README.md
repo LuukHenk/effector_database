@@ -1,8 +1,7 @@
 # Effector database
 #### Version 0.1.0
 Effector database is a Django app that contains information about effectors.
-Visitors can view, search and edit effectors in the database.
-There is also the option to add new effectors to the database.
+Visitors can view, search, add and edit effectors in the database.
 
 ## Quick start
 ### Requirements
